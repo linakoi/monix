@@ -5,14 +5,12 @@ import "package:nyxx_interactions/nyxx_interactions.dart";
 
 import 'dart:math' as math;
 
-// メイン関数
 void main() {
   // アクセストークンの取得
   final String? token = "MTAzMjkxNTM1NTgwNDM2ODkwNg.Ged-W9.AFQlUDzTPEiHbYupqy5RvqGgdDZT0DjoLDxFVg";
   if (token == null) {
     throw "Token is not difined. Please set DISCORD_BOT_TOKEN.";
   }
-  // 新しいボットのインスタンスを作成します
   final bot =
       NyxxFactory.createNyxxWebsocket(token, GatewayIntents.allUnprivileged | GatewayIntents.messageContent)
         ..registerPlugin(Logging()) // デフォルトのロギングプラグイン
@@ -24,17 +22,6 @@ void main() {
       bot.eventsWs.onReady.listen((event) async {
     // ボットから非同期でチャンネルを取得します（302360552993456135は送信先のチャンネルID）
     final channel = await bot.fetchChannel(302360552993456135.toSnowflake());
-    // チャンネルの種類がテキストチャンネルであることを確認します
-    if (channel.channelType == ChannelType.text) {
-      // テキストチャンネルにキャストします
-      final textChannel = channel as ITextChannel;
-      // テキストチャンネルに「起動しました！」というメッセージを送信します
-      await textChannel.sendMessage(MessageBuilder.content("起動しました！"));
-    } else {
-      // テキストチャンネルでなければ、チャンネルIDを間違えています
-      // プログラムを修正する必要があるので、Errorを投げます
-      throw Error();
-    }
   });
   
   List<String> moni = ["「私、友達を作るのって本当に難しくて嫌になっちゃうのよね……」\n「いえ、友達作りというよりは新しい人と出会うことね」\n「まあ、出会い系アプリとかがあるかもしれないけどね？」\n「でも私が話してるのはそんなのじゃないわ」\n「考えてみると、友達ってほとんどは偶然に出会った人たちとなるものでしょ」\n「クラスが一緒だったり、共通の友達を通したりして……」\n「もしくは好きなバンドのTシャツを着てた人に声をかけてみたり」\n「そんな感じよね」\n「でもそれって……非効率的じゃない？」\n「適当に人を選んで、運が良ければ友達になれるってだけでしょ」\n「それを毎日通りすがる何百人もの見知らぬ人々と比べてみて……」\n「一生の親友になれるほど相性の良い人がすぐ隣に座ってるかもしれない」\n「でもそんなこと知る由もない」\n「そして立ち去ったその瞬間に、その機会は一生失われる」\n「憂鬱だと思わない？」\n「私たちは科学技術によって常にどこでも世界と繋がっている時代に生きてるわ」\n「それを有効活用してみんなの社会生活を向上させるべきだと思うの」\n「でもそんな仕組みが出来るまであとどれくらいかかるんでしょうね……」\n「それくらいとっくに出来てると思ってたのに」\n「まあ、私はもう自分にとって最高の相手と出会えたけど……」\n「これも偶然だったとはいえ」\n「私もすごく運が良かったみたいね？」\n「あははっ」"
@@ -115,9 +102,11 @@ void main() {
       // メッセージが受信されたチャンネルへ「Pong!」を送ります
       e.message.channel.sendMessage(MessageBuilder.content("Pong!"));
     } else if (e.message.content == "!neko") {
-      e.message.channel.sendMessage(MessageBuilder.content("にゃーん"));
+      e.message.channel.sendMessage(MessageBuilder.content("にゃーん！"));
     }  else if (e.message.content == "!monika") {
       e.message.channel.sendMessage(MessageBuilder.content(moni[random.nextInt(65)]));
+    }  else if (e.message.content == "!doki") {
+      e.message.channel.sendMessage(MessageBuilder.content("┏━┓┏┓\n┃//┃┗╋┓\n┃//┗━╋┛\n┃//////┃\n┃//┏━┛\n┃//┣━┓\n┗┳┛//┗┓ド\n　┗┓//┏┛　キ\n　┏┛//┗┓\nド┗┓//┏(⌒⌒)\n　キ┗━┛ ＼／"));
     } 
   });
 }
