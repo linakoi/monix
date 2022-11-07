@@ -8,7 +8,7 @@ import 'dart:math' as math;
 // メイン関数
 void main() {
   // アクセストークンの取得
-  final String? token = "トークンもしくはトークンが入っている環境変数に置き換え" ;
+  final String? token = "トークンもしくは環境変数に置き換え" ;
   if (token == null) {
     throw "Token is not difined. Please set DISCORD_BOT_TOKEN.";
   }
