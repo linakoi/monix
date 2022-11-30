@@ -8,7 +8,7 @@ import 'dart:math' as math;
 // メイン関数
 void main() {
   // アクセストークンの取得
-  final String? token = "トークンもしくは環境変数に置き換え" ;
+  final String? token = "内緒><" ;
   if (token == null) {
     throw "Token is not difined. Please set DISCORD_BOT_TOKEN.";
   }
@@ -20,22 +20,6 @@ void main() {
         ..registerPlugin(IgnoreExceptions()) // 発生する可能性のあるキャッチされない例外を処理するプラグイン
         ..connect();
 
-
-      bot.eventsWs.onReady.listen((event) async {
-    // ボットから非同期でチャンネルを取得します（302360552993456135は送信先のチャンネルID）
-    final channel = await bot.fetchChannel(302360552993456135.toSnowflake());
-    // チャンネルの種類がテキストチャンネルであることを確認します
-    if (channel.channelType == ChannelType.text) {
-      // テキストチャンネルにキャストします
-      final textChannel = channel as ITextChannel;
-      // テキストチャンネルに「起動しました！」というメッセージを送信します
-      await textChannel.sendMessage(MessageBuilder.content("起動しました！"));
-    } else {
-      // テキストチャンネルでなければ、チャンネルIDを間違えています
-      // プログラムを修正する必要があるので、Errorを投げます
-      throw Error();
-    }
-  });
   
   List<String> moni = ["「私、友達を作るのって本当に難しくて嫌になっちゃうのよね……」\n「いえ、友達作りというよりは新しい人と出会うことね」\n「まあ、出会い系アプリとかがあるかもしれないけどね？」\n「でも私が話してるのはそんなのじゃないわ」\n「考えてみると、友達ってほとんどは偶然に出会った人たちとなるものでしょ」\n「クラスが一緒だったり、共通の友達を通したりして……」\n「もしくは好きなバンドのTシャツを着てた人に声をかけてみたり」\n「そんな感じよね」\n「でもそれって……非効率的じゃない？」\n「適当に人を選んで、運が良ければ友達になれるってだけでしょ」\n「それを毎日通りすがる何百人もの見知らぬ人々と比べてみて……」\n「一生の親友になれるほど相性の良い人がすぐ隣に座ってるかもしれない」\n「でもそんなこと知る由もない」\n「そして立ち去ったその瞬間に、その機会は一生失われる」\n「憂鬱だと思わない？」\n「私たちは科学技術によって常にどこでも世界と繋がっている時代に生きてるわ」\n「それを有効活用してみんなの社会生活を向上させるべきだと思うの」\n「でもそんな仕組みが出来るまであとどれくらいかかるんでしょうね……」\n「それくらいとっくに出来てると思ってたのに」\n「まあ、私はもう自分にとって最高の相手と出会えたけど……」\n「これも偶然だったとはいえ」\n「私もすごく運が良かったみたいね？」\n「あははっ」"
   ,"「生きてる意味がないって感じることはない？」\n「自殺したいという意味じゃなくて」\n「ただ何をするにも特別な意味はないでしょ」\n「ただ学校に通ったり、どこかの会社で何かの仕事することが……」\n「代わりなんていくらでもいるし、いなくなっても誰にも気にされないって感じない？」\n「そう思うと、卒業したら絶対世界を変えてやる、って気持ちになるの」\n「でも成長するにつれて、なんて幼稚な考えなんだろう、ってつくづく思うの」\n「世界を変えるだなんてそう簡単じゃないし」\n「だって人工知能を発明したり、大統領になれる可能性はどれほどのものなの？」\n「私が生きるために消費してしまう莫大な資源の恩を一生かけても返せる気がしないのよ」\n「だから幸せになる秘訣って、どうしようもなくわがままになることだと思うの」\n「自分自身と、成長期が重なったからたまたま周りにいただけの友達を気にかけて」\n「みんなが世界から貰い続けて、消費し続けて、一生その恩を返すことがないという現実は無視してね」\n「でも死んだ方が世界のためだということに気付くと、人の人生観は変わってしまうのよ！」\n「自分は役に立ってるんだ、って思い込んで生き続けることを正当化しないといけなくなるみたいなの」\n「とにかく、私は自分が一生で消費する資源の恩返しをするために生きていきたいの」\n「それをいつか達成できたら、私にとっては総合的にはポジティブだから幸せに死ねるわ」\n「もちろん、達成できなかったら……」\n「いえ、自殺するには私は利己的すぎるわ」\n「いい人であり続けるのは難しいわね？」\n「あはは！」"
@@ -101,10 +85,23 @@ void main() {
   ,"くぁwせdrftgyふじこlp"
   ,"Monika.chrのバックアップを忘れずに。"
   ,"君は太陽、私だけの太陽。"];
+  
+  bot.eventsWs.onReady.listen((event) async {
+    final channel = await bot.fetchChannel(1032912458492416072.toSnowflake());
+    // チャンネルの種類がテキストチャンネルであることを確認します
+    if (channel.channelType == ChannelType.text) {
+      // テキストチャンネルにキャストします
+      final textChannel = channel as ITextChannel;
+      await textChannel.sendMessage(MessageBuilder.content("起動しました！"));
+    } else {
+      print("テキストチャンネルじゃねえよ");
+      throw Error();
+    }
+  });
+  
   bot.eventsWs.onReady.listen((e) {
     print("Ready!");
   });
-
   var random = math.Random();
     print(random.nextBool());
 
@@ -120,6 +117,12 @@ void main() {
       e.message.channel.sendMessage(MessageBuilder.content(moni[random.nextInt(65)]));
     }   else if (e.message.content == "!doki") {
       e.message.channel.sendMessage(MessageBuilder.content("┏━┓┏┓\n┃//┃┗╋┓\n┃//┗━╋┛\n┃//////┃\n┃//┏━┛\n┃//┣━┓\n┗┳┛//┗┓ド\n　┗┓//┏┛　キ\n　┏┛//┗┓\nド┗┓//┏(⌒⌒)\n　キ┗━┛ ＼／"));
+    } else if (e.message.content == "!monimoni") {
+      e.message.channel.sendMessage(MessageBuilder.content("モニモニ"));
+    } else if (e.message.content == "!inu") {
+      e.message.channel.sendMessage(MessageBuilder.content("ワーン"));
     } 
+
+    
   });
 }
