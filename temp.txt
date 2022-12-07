@@ -1,0 +1,11 @@
+bot.eventsWs.onReady.listen((event) async {
+    final channel = await bot.fetchChannel(917535801737371668.toSnowflake());
+    if (channel.channelType == ChannelType.text) {
+      // テキストチャンネルにキャストします
+      final textChannel = channel as ITextChannel;
+      await textChannel.sendMessage(MessageBuilder.content("起動しました！"));
+    } else {
+      print("テキストチャンネルじゃねえよ");
+      throw Error();
+    }
+  });
