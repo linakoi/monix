@@ -7,7 +7,7 @@ void main() {
 
   // アクセストークンの取得
   final Map<String, String> envVars = Platform.environment;
-  final String? token = "MTAzMjUzMDI3NzM4MzI3ODY0Mw.GD2aGv.Bwip1Ofn3nFzqsr1vWQYi4yeXwrn5qOWhpxb24";
+  final String? token = "MTAzMjkxNTM1NTgwNDM2ODkwNg.GRY1Hs.2HrLTViUBx6FqVNaG5A0O2e93FXRBDLM_GEPF4";
   if (token == null) {
     throw "Token is not difinedaaaaaaa. Please set disco_token.";
   }
